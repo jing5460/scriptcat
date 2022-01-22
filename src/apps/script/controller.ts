@@ -495,10 +495,8 @@ export class ScriptController {
             const ret: ScriptCache = <ScriptCache>Object.assign({}, script);
 
             // 自定义配置
-            for (const key in ret.metadata) {
-                if (ret.selfMetadata && ret.selfMetadata[key]) {
-                    ret.metadata[key] = ret.selfMetadata[key];
-                }
+            for (const key in ret.selfMetadata) {
+                ret.metadata[key] = ret.selfMetadata[key];
             }
 
             ret.value = await this.getScriptValue(ret);
